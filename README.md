@@ -2,6 +2,10 @@
 ## Content
 In this repository the code and the documentation can be found for the project that have been written for the Operations Research course taught at the Budapest Corvinus Univerity in the 2020 fall semester.
 The code for the task can be found in the two py files. Currently no test code have been added to this repository.
+If you encounter this repository as a downloaded zip version the newest version can be found online at my GitHub page
+```
+https://github.com/ladjanszki/sudoku_lp
+```
 
 ## Dependencies
 The code uses numpy and the frequently used Python linear programming package Pulp. The development and thes environment can be recreated by using the conda environment.
