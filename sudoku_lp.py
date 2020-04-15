@@ -9,13 +9,18 @@ import numpy as np
 
 import util
 
+# Difficulty of the puzzle (1 to 9)
+difficulty = 9
 
-# How many cells to pre-fill in the sudoku table
-preFilledCells = 15
+
+# How many cells to pre-fill in the random generator
+preFilledCells = 10
 
 validGenerated = False
 attempts = 1
 
+print('Generating...')
+print('Difficulty: ' + str(difficulty) + '/10')
 while not validGenerated:
 
     # Creating the problem
@@ -100,20 +105,32 @@ while not validGenerated:
     
     #print(problem.status)
     #print(pulp.LpStatus[problem.status])
-    print(str(attempts) + ' attempt to generate...')
+    #print(str(attempts) + ' attempt to generate...')
     attempts = attempts + 1
   
     if problem.status == 1:
         validGenerated = True
 
 
-mx = util.solutionToMatrix(var)
+
+solution = util.solutionToMatrix(var)
+
+# Delete some elements from the matrix to create the puzzle
+puzzle = solution.copy()
+
+for hCol in range(3): 
+    for hRow in range(3):
+       for col in range(3):
+           for row in range(3):
+               if np.random.uniform() <= float(difficulty / 10):
+                   puzzle[hCol, hRow, col, row] = int(0)     
+ 
 
 print('')
 print('The Puzzle: ')
-print(util.matrixPrettyPrinter(initial))
+print(util.matrixPrettyPrinter(puzzle))
 print('The SOLUTION: ')
-print(util.matrixPrettyPrinter(mx))
+print(util.matrixPrettyPrinter(solution))
  
 
 
